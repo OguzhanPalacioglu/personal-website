@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Oguzhan Palacioglu - CV</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    @media print {
+      @page {
+        margin: 1.5cm;
+        size: A4;
+      }
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: white;
+      font-size: 11pt;
+    }
+    
+    .cv-container {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+    }
+    
+    /* Header */
+    .header {
+      margin-bottom: 30px;
+      border-bottom: 3px solid #2c3e50;
+      padding-bottom: 20px;
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .header-text {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .header-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .cv-profile-photo {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid #3498db;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      background: #f8f9fa;
+    }
+    
+    .cv-profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    
+    .cv-photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      color: #6c757d;
+      text-align: center;
+      padding: 10px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #f8f9fa;
+      z-index: 10;
+    }
+    
+    .cv-photo-placeholder span {
+      font-size: 24px;
+      margin-bottom: 4px;
+      opacity: 0.7;
+    }
+    
+    .cv-photo-placeholder p {
+      font-size: 8px;
+      font-weight: 500;
+      margin: 0;
+      opacity: 0.8;
+    }
+    
+    .cv-photo-placeholder.hidden {
+      display: none !important;
+    }
+    
+    .name {
+      font-size: 32px;
+      font-weight: 900;
+      color: #2c3e50;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+    
+    .title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #34495e;
+      margin-bottom: 15px;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 12px;
+      color: #7f8c8d;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    
+    /* Sections */
+    .section {
+      margin-bottom: 35px;
+    }
+    
+    .section-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #2c3e50;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+    
+    /* Experience */
+    .experience-item {
+      margin-bottom: 20px;
+    }
+    
+    .job-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 3px;
+    }
+    
+    .company {
+      font-size: 13px;
+      font-weight: 600;
+      color: #34495e;
+      margin-bottom: 3px;
+    }
+    
+    .date-location {
+      font-size: 11px;
+      color: #7f8c8d;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+    
+    .job-description {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.5;
+    }
+    
+    .job-description ul {
+      margin-left: 20px;
+    }
+    
+    .job-description li {
+      margin-bottom: 3px;
+    }
+    
+    /* Education */
+    .education-item {
+      margin-bottom: 15px;
+    }
+    
+    .degree {
+      font-size: 13px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 3px;
+    }
+    
+    .institution {
+      font-size: 12px;
+      color: #34495e;
+      margin-bottom: 3px;
+    }
+    
+    .education-date {
+      font-size: 11px;
+      color: #7f8c8d;
+      font-style: italic;
+    }
+    
+    /* Skills */
+    .skill-item {
+      margin-bottom: 15px;
+      padding-left: 15px;
+      position: relative;
+    }
+    
+    .skill-item::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #3498db;
+      font-weight: bold;
+    }
+    
+    .skill-category {
+      margin-bottom: 10px;
+    }
+    
+    .skill-category-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+    
+    .skill-list {
+      font-size: 11px;
+      color: #555;
+    }
+    
+    /* Certificates */
+    .certificate-item {
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 5px;
+      padding-left: 15px;
+      position: relative;
+    }
+    
+    .certificate-item::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #3498db;
+      font-weight: bold;
+    }
+    
+    /* Languages */
+    .language-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      margin-bottom: 5px;
+    }
+    
+    .language-name {
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    
+    .language-level {
+      color: #7f8c8d;
+    }
+    
+    /* References */
+    .reference-item {
+      margin-bottom: 10px;
+    }
+    
+    .reference-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 3px;
+    }
+    
+    .reference-title {
+      font-size: 11px;
+      color: #34495e;
+      margin-bottom: 3px;
+    }
+    
+    .reference-email {
+      font-size: 11px;
+      color: #7f8c8d;
+    }
+    
+    @media print {
+      body {
+        font-size: 10pt;
+      }
+      
+      .cv-container {
+        padding: 0;
+      }
+      
+      .name {
+        font-size: 28px;
+      }
+      
+      .title {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div class="header-image">
+          <div class="cv-profile-photo">
+            <img src="Oguzhan_Palacioglu_Profile.png" alt="Oguzhan Palacioglu" id="cvProfileImg">
+            <div class="cv-photo-placeholder" id="cvPhotoPlaceholder">
+              <span>📷</span>
+              <p>Profil Fotoğrafı</p>
+            </div>
+          </div>
+        </div>
+        <div class="header-text">
+          <div class="name">OGUZHAN PALACIOGLU</div>
+          <div class="title">Information Systems Manager and IT Team Leader</div>
+          <div class="contact-info">
+            <div class="contact-item">📍 Istanbul, Turkey</div>
+            <div class="contact-item">✉️ opalacioglu@gmail.com</div>
+            <div class="contact-item">🔗 linkedin.com/in/OguzhanPalacioglu</div>
+            <div class="contact-item">💻 github.com/OguzhanPalacioglu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="section">
+      <div class="section-title">Experience</div>
+      
+      <div class="experience-item">
+        <div class="job-title">Information Systems Manager and IT Team Leader</div>
+        <div class="company">German High School Alumni's Culture and Education Foundation – ALKEV Private Schools, Istanbul</div>
+        <div class="date-location">October 2024 - Present</div>
+        <div class="job-description">
+          <ul>
+            <li><strong>Team Leadership:</strong> Led and mentored a team of IT specialists by delegating tasks, providing training, and ensuring continuous professional development.</li>
+            <li><strong>Cross-Department Collaboration:</strong> Coordinated with other departments to align IT strategies with organizational goals and ensure smooth operations.</li>
+            <li><strong>Policy & Procedure Development:</strong> Developed and implemented IT policies, procedures, and best practices to maintain high standards of security and efficiency.</li>
+            <li><strong>Project Management:</strong> Oversaw IT projects from planning to execution, including budgeting, resource allocation, and timeline management.</li>
+            <li><strong>Vendor Management:</strong> Managed relationships with vendors and negotiated contracts to optimize costs and service quality.</li>
+            <li><strong>Strategic Reporting:</strong> Regularly reported on IT performance, risks, and strategic initiatives to senior management and stakeholders.</li>
+            <li><strong>Innovation & Improvement:</strong> Fostered a culture of innovation and continuous improvement within the IT team to enhance overall service delivery.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="job-title">Information Systems Manager</div>
+        <div class="company">German High School Alumni's Culture and Education Foundation – ALKEV Private Schools, Istanbul</div>
+        <div class="date-location">September 2023 – October 2024</div>
+        <div class="job-description">
+          <ul>
+            <li>Developed and enhanced software solutions using HTML, CSS, JavaScript, PHP, Laravel, and Python tailored to the school's specific needs.</li>
+            <li>Administered Google Workspace for 2000+ students, teachers, and staff, ensuring efficient and secure communication.</li>
+            <li>Managed network operations and resolved complex connectivity issues to maintain seamless integration across devices and platforms.</li>
+            <li>Implemented and maintained mobile device management (MDM) solutions such as Apple School Manager, Cisco Meraki, Mosyle Manager, and Jamf School.</li>
+            <li>Collaborated with internal teams and external partners to quickly resolve IT issues and optimize system performance.</li>
+            <li>Analyzed IT network data to identify improvement opportunities and provided strategic recommendations.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="experience-item">
+        <div class="job-title">IT Operations Specialist</div>
+        <div class="company">German High School Alumni's Culture and Education Foundation – ALKEV Private Schools, Istanbul</div>
+        <div class="date-location">June 2020 – September 2023</div>
+        <div class="job-description">
+          <ul>
+            <li>Provided help desk support for desktop PCs, laptops, MacBooks, Linux systems, and mobile devices.</li>
+            <li>Installed, serviced, upgraded, and maintained over 300 Windows and Mac computers, as well as iOS tablets and Android devices.</li>
+            <li>Assisted in managing basic network operations and troubleshooting connectivity issues.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <div class="section-title">Education</div>
+      
+      <div class="education-item">
+        <div class="degree">Master of Science in Information Technologies</div>
+        <div class="institution">Istanbul Technical University</div>
+        <div class="education-date">September 2022 - July 2023</div>
+      </div>
+
+      <div class="education-item">
+        <div class="degree">Bachelor's Degree in Health Management</div>
+        <div class="institution">Anadolu University</div>
+        <div class="education-date">September 2016 - August 2020</div>
+      </div>
+
+      <div class="education-item">
+        <div class="degree">Bachelor's Degree in Public Finance</div>
+        <div class="institution">Sakarya University</div>
+        <div class="education-date">September 2012 - August 2016</div>
+      </div>
+    </div>
+
+    <!-- Technical Skills -->
+    <div class="section" style="margin-bottom: 40px;">
+      <div class="section-title">Technical Skills</div>
+      <div class="skill-item">
+        <div class="skill-category-title">Programming Languages</div>
+        <div class="skill-list">HTML, CSS, JavaScript, PHP, Python, SQL</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category-title">Frameworks & Tools</div>
+        <div class="skill-list">Laravel, Git, MongoDB, MySQL, MVC, Docker</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category-title">Operating Systems</div>
+        <div class="skill-list">Linux, Windows, Mac OS, iOS, Android</div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-category-title">System Administration</div>
+        <div class="skill-list">Network configuration, troubleshooting, technical support, MDM</div>
+      </div>
+    </div>
+
+    <!-- Certificates -->
+    <div class="section">
+      <div class="section-title">Certificates</div>
+      <div class="certificate-item"><strong>Google Introduction to Google Workspace Administration</strong> – October 2024</div>
+      <div class="certificate-item"><strong>Google Technical Support Fundamentals</strong> – September 2024</div>
+      <div class="certificate-item"><strong>Google The Bits and Bytes of Computer Networking</strong> – October 2024</div>
+      <div class="certificate-item"><strong>Crash Course on Python</strong> – January 2025</div>
+      <div class="certificate-item"><strong>Artificial Intelligence (AI) Certificate IBM</strong> – March 2025</div>
+    </div>
+
+    <!-- Language Skills -->
+    <div class="section">
+      <div class="section-title">Language Skills</div>
+      <div class="language-item">
+        <span class="language-name">Turkish</span>
+        <span class="language-level">Native</span>
+      </div>
+      <div class="language-item">
+        <span class="language-name">English</span>
+        <span class="language-level">Fluent, B2 - IELTS</span>
+      </div>
+      <div class="language-item">
+        <span class="language-name">German</span>
+        <span class="language-level">A1</span>
+      </div>
+    </div>
+
+    <!-- References -->
+    <div class="section">
+      <div class="section-title">References</div>
+      <div class="reference-item">
+        <div class="reference-name">Hasan Kara</div>
+        <div class="reference-title">Former IT Manager, ALKEV Private Schools</div>
+        <div class="reference-email">karahasan@gmail.com</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // CV Profile photo loading
+    const cvProfileImg = document.getElementById('cvProfileImg');
+    const cvPhotoPlaceholder = document.getElementById('cvPhotoPlaceholder');
+    
+    if (cvProfileImg && cvPhotoPlaceholder) {
+      cvProfileImg.onload = function() {
+        cvPhotoPlaceholder.style.display = 'none';
+      };
+      
+      cvProfileImg.onerror = function() {
+        cvPhotoPlaceholder.style.display = 'flex';
+      };
+      
+      if (cvProfileImg.complete && cvProfileImg.naturalWidth > 0) {
+        cvPhotoPlaceholder.style.display = 'none';
+      }
+    }
+    
+    // Auto print when page loads
+    window.onload = function() {
+      setTimeout(function() {
+        window.print();
+      }, 500);
+    };
+  </script>
+</body>
+</html>
