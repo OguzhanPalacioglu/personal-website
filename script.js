@@ -128,3 +128,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+
+
+const btn = document.getElementById('mode-toggle');
+
+btn.addEventListener('click', () => {
+    document.body.classList.toggle('terminal-mode');
+    
+    if (document.body.classList.contains('terminal-mode')) {
+        btn.innerText = "🌐 GUI Mode";
+    } else {
+        btn.innerText = "📟 CLI Mode";
+    }
+});
