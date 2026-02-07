@@ -934,3 +934,27 @@ footer{
     padding: 10px 12px;
   }
 }
+
+/* Terminal Modu Renkleri */
+body.terminal-mode {
+    background-color: #0c0c0c !important; /* Simsiyah arkaplan */
+    color: #00ff00 !important; /* Matris yeşili yazı */
+    font-family: 'Courier New', Courier, monospace !important;
+}
+
+body.terminal-mode a {
+    color: #00cc00 !important;
+    text-decoration: underline;
+}
+
+/* Tüm kutuları şeffaf ve yeşil çerçeveli yap */
+body.terminal-mode div, body.terminal-mode section, body.terminal-mode header {
+    background: transparent !important;
+    border: 1px solid #00ff00 !important;
+    box-shadow: none !important;
+}
+
+/* Resimleri siyah-beyaz (Matrix tarzı) yap */
+body.terminal-mode img {
+    filter: grayscale(100%) brightness(80%) sepia(50%) hue-rotate(100deg) saturate(500%);
+}
